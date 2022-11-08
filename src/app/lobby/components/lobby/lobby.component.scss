@@ -8,4 +8,11 @@
         font-size: 40px;
         margin-bottom: 30px;
     }
+
+    & .code-blocks-list {
+        display: flex;
+        flex-wrap: wrap;
+        row-gap: 20px;
+        column-gap: 20px;
+    }
 }

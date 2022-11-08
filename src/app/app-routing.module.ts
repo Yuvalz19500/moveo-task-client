@@ -10,7 +10,11 @@ const routes: Routes = [
     path: 'mentor-login',
     loadChildren: () => import('./authentication/authentication.module').then((m) => m.AuthenticationModule)
   },
-  { path: '**', redirectTo: '/lobby' }
+  {
+    path: 'session',
+    loadChildren: () => import('./session/session.module').then((m) => m.SessionModule)
+  },
+  { path: '**', redirectTo: '/session' }
 ];
 
 @NgModule({

@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { LobbyCodeBlock } from "src/app/interfaces/lobby";
+import { User } from "src/app/interfaces/user";
 
 export enum LobbyActions {
     getCodeBlocks = '[Authentication] Get Code Blocks',
@@ -15,6 +16,6 @@ export const getCodeBlocks = createAction(LobbyActions.getCodeBlocks);
 export const getCodeBlocksSuccess = createAction(LobbyActions.getCodeBlocksSuccess, props<{ payload: {codeBlocks: LobbyCodeBlock[]}}>());
 export const getCodeBlocksFail = createAction(LobbyActions.getCodeBlocks);
 
-export const getStudents = createAction(LobbyActions.getCodeBlocks);
-export const getStudentsSuccess = createAction(LobbyActions.getCodeBlocksSuccess, props<{ payload: {codeBlocks: LobbyCodeBlock[]}}>());
-export const getStudentsFail = createAction(LobbyActions.getCodeBlocks);
+export const getStudents = createAction(LobbyActions.getStudents);
+export const getStudentsSuccess = createAction(LobbyActions.getStudentsSuccess, props<{ payload: {students: User[]}}>());
+export const getStudentsFail = createAction(LobbyActions.getStudentsFail);

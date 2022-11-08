@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { lobbyFeatureKey, lobbyReducer } from './store/lobby.reducer';
 import { LobbyEffects } from './store/lobby.effects';
 import { EffectsModule } from '@ngrx/effects';
+import { StudentsModalComponent } from './components/students-modal/students-modal.component';
 
 const components = [
   LobbyContainerComponent
@@ -19,7 +20,8 @@ const components = [
   declarations: [
     ...components,
     LobbyComponent,
-    LobbyCodeBlockItemComponent
+    LobbyCodeBlockItemComponent,
+    StudentsModalComponent
   ],
   imports: [
     LobbyRoutingModule,

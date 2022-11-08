@@ -3,11 +3,29 @@ import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, exhaustMap, map, of, tap } from "rxjs";
 import { User } from "src/app/interfaces/user";
+import { LobbyService } from "../services/lobby.service";
+import { getCodeBlocks, getCodeBlocksFail, getCodeBlocksSuccess, getStudents, getStudentsFail, getStudentsSuccess } from "./lobby.actions";
 
 @Injectable()
 export class LobbyEffects {
     constructor(
         private actions$: Actions, 
-        private router: Router
+        private lobbyService: LobbyService
         ){}
+
+        getStudents$ = createEffect(() => {
+            return this.actions$.pipe(
+                ofType(getStudents),
+                exhaustMap(() => this.lobbyService.getStudents().pipe(
+                    map((response: any) => getStudentsSuccess({payload: {students: response}})),
+                    catchError((error) => of(getStudentsFail()))))
+                )});
+
+        getCodeBlocks$ = createEffect(() => {
+            return this.actions$.pipe(
+                ofType(getCodeBlocks),
+                exhaustMap(() => this.lobbyService.getCodeBlocks().pipe(
+                    map((response: any) => getCodeBlocksSuccess({payload: {codeBlocks: response}})),
+                    catchError((error) => of(getCodeBlocksFail()))))
+                )});
 }

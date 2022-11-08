@@ -1,11 +1,11 @@
 <mat-card class="code-block-card">
     <mat-card-header>
-        <mat-card-title>Code Block Title</mat-card-title>
+        <mat-card-title>{{title}}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <pre><code [highlight]="code"></code></pre>
+        <pre class="pre-format-wrapper"><code class="code-wrapper" [highlight]="code"></code></pre>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>Pick Code Block</button>
+        <button mat-button (click)="onPickCodeBlock()">Pick Code Block</button>
     </mat-card-actions>
 </mat-card>

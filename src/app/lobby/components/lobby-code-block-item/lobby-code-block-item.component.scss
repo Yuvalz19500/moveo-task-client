@@ -1,3 +1,13 @@
 .code-block-card {
     width: 400px;
+
+    & .pre-format-wrapper {
+
+        & .code-wrapper {
+        }
+    }
+
+    & mat-card-actions {
+        padding-top: 20px;
+    }
 }

@@ -1,0 +1,14 @@
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    & .page-heder {
+        font-size: 22px;
+    }
+
+    & .students-list-wrapper {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    } 
+}
