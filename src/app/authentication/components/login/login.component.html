@@ -1,0 +1,16 @@
+<div class="page-wrapper">
+    <form class="login-form-wrapper" [formGroup]="loginForm" (ngSubmit)="onLoginAttempt()">
+        <div class="login-logo">Moveo Task</div>
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput formControlName="username">
+            <mat-error>Username field must not be empty</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password">
+            <mat-error>Password field must not be empty</mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="login-button" type="submit">Login</button>
+    </form>
+</div>

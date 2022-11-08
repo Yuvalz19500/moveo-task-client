@@ -1,0 +1,15 @@
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+@Component({
+  selector: 'moveo-task-login-container',
+  templateUrl: './lobby.container.html',
+})
+export class LobbyContainerComponent implements OnInit {
+
+  constructor(private store: Store) { }
+
+  ngOnInit(): void {
+  }
+
+}
