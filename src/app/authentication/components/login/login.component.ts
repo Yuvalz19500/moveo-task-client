@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -7,8 +7,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  @Input() studentLogin = false;
 
-  @Output() loginSubmit = new EventEmitter<{username: string, password: string}>();
+  @Output() loginSubmit = new EventEmitter<{username: string, password: string, studentLogin: boolean}>();
 
   loginForm: FormGroup = this.fb.group({
     username: ['', [Validators.required]],
@@ -18,11 +19,12 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    console.log('Yuval debug -', this.studentLogin);
   }
 
   onLoginAttempt() {
     if (this.loginForm.valid) {
-      this.loginSubmit.emit(this.loginForm.value);
+      this.loginSubmit.emit({...this.loginForm.value, studentLogin: this.studentLogin});
     }
   }
 }

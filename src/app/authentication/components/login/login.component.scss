@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #2d323d;
 
     & .login-form-wrapper {
         display: flex;
@@ -13,7 +12,9 @@
             font-size: 40px;
             margin-bottom: 70px;
             text-align: center;
-            color: #1976d2;
+            color: #3f51b5;
+            align-self: center;
+            width: 500px;
         }
 
         & .login-button {

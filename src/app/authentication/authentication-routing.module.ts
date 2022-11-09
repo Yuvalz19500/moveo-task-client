@@ -4,8 +4,14 @@ import { LoginContainerComponent } from './containers/login-container/login.cont
 
 const routes: Routes = [
   {
-    path: '',
-    component: LoginContainerComponent
+    path: 'mentor-login',
+    component: LoginContainerComponent,
+    data: {studentLogin: false}
+  },
+  {
+    path: 'student-login/:uuid/:studentId/:codeBlockId',
+    component: LoginContainerComponent,
+    data: {studentLogin: true}
   }
 ];
 

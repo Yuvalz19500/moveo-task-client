@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, exhaustMap, map, of, tap } from "rxjs";
 import { User } from "src/app/interfaces/user";
 import { LobbyService } from "../services/lobby.service";
-import { getCodeBlocks, getCodeBlocksFail, getCodeBlocksSuccess, getStudents, getStudentsFail, getStudentsSuccess } from "./lobby.actions";
+import { generateSessionLink, generateSessionLinkFail, generateSessionLinkSuccess, getCodeBlocks, getCodeBlocksFail, getCodeBlocksSuccess, getStudents, getStudentsFail, getStudentsSuccess } from "./lobby.actions";
 
 @Injectable()
 export class LobbyEffects {
@@ -28,4 +28,14 @@ export class LobbyEffects {
                     map((response: any) => getCodeBlocksSuccess({payload: {codeBlocks: response}})),
                     catchError((error) => of(getCodeBlocksFail()))))
                 )});
+
+        generateSessionLink$ = createEffect(() => {
+            return this.actions$.pipe(
+                ofType(generateSessionLink),
+                exhaustMap((data) => this.lobbyService.generateSessionLink(data.payload.codeBlockId, data.payload.studentId).pipe(
+                    map((response: any) => generateSessionLinkSuccess({payload: {link: response.link}})),
+                    catchError((error) => of(generateSessionLinkFail()))
+                ))
+            )
+        })
 }

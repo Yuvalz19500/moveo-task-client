@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { selectLobbyState } from '../../store';
-import { getCodeBlocks, getStudents } from '../../store/lobby.actions';
+import { generateSessionLink, getCodeBlocks, getStudents } from '../../store/lobby.actions';
 
 @Component({
   selector: 'moveo-task-login-container',
@@ -16,6 +16,11 @@ export class LobbyContainerComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(getCodeBlocks());
     this.store.dispatch(getStudents());
+  }
+
+  generateSessionLink(data: {studentId: number, codeBlockId: number}) {
+    console.log('yuval debug-', data);
+    this.store.dispatch(generateSessionLink({payload: {codeBlockId: data.codeBlockId, studentId: data.studentId}}));
   }
 
 }

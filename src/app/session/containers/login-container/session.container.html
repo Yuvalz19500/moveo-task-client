@@ -1,1 +1,4 @@
-<moveo-task-session></moveo-task-session>
+<ng-container *ngIf="sessionState$ | async as state">
+    <moveo-task-session [isStudent]="isStudent" [code]="state.code" (codeChange)="onCodeChange($event)">
+    </moveo-task-session>
+</ng-container>

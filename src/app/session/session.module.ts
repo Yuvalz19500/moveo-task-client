@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { SessionRoutingModule } from './session-routing.module';
 import { SessionComponent } from './components/session/session.component';
 import { SessionContainerComponent } from './containers/login-container/session.container';
 import { SharedModule } from '../shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import { sessionFeatureKey, sessionReducer } from './store/session.reducer';
+import { SessionEffects } from './store/session.effects';
+import { EffectsModule } from '@ngrx/effects';
 
 const components = [
   SessionComponent,
@@ -17,7 +19,9 @@ const components = [
   ],
   imports: [
     SessionRoutingModule,
-    SharedModule
+    SharedModule,
+    StoreModule.forFeature(sessionFeatureKey, sessionReducer),
+    EffectsModule.forFeature([SessionEffects])
   ]
 })
 export class SessionModule { }

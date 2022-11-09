@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from 'src/app/interfaces/user';
 
 @Component({
@@ -11,10 +11,17 @@ export class StudentsModalComponent implements OnInit {
 
   students: User[] = []
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data: DialogData) { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) private data: DialogData,
+    private dialogRef: MatDialogRef<StudentsModalComponent>
+  ) { }
 
   ngOnInit(): void {
     this.students = this.data.students
+  }
+
+  onStudentPicked(student: User) {
+    this.dialogRef.close(student?.id);
   }
 
 }

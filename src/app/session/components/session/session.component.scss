@@ -1,5 +1,11 @@
 .page-wrapper {
-    & .code-editor {
-        padding: 30px;
+    box-sizing: border-box;
+
+    & .preformat-wrapper {
+        margin: 0;
+
+        & .code-editor {
+            padding: 30px;
+        }
     }
 }

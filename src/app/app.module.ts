@@ -11,6 +11,9 @@ import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: { autoConnect: false } };
 
 const modules = [
   BrowserModule,
@@ -20,6 +23,7 @@ const modules = [
   StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
   EffectsModule.forRoot(),
   HttpClientModule,
+  SocketIoModule.forRoot(config)
 ]
 
 const components = [

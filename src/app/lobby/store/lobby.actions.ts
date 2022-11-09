@@ -3,13 +3,17 @@ import { LobbyCodeBlock } from "src/app/interfaces/lobby";
 import { User } from "src/app/interfaces/user";
 
 export enum LobbyActions {
-    getCodeBlocks = '[Authentication] Get Code Blocks',
-    getCodeBlocksSuccess = '[Authentication] Get Code Blocks Success',
-    getCodeBlocksFail = '[Authentication] Get Code Blocks Fail',
+    getCodeBlocks = '[Lobby] Get Code Blocks',
+    getCodeBlocksSuccess = '[Lobby] Get Code Blocks Success',
+    getCodeBlocksFail = '[Lobby] Get Code Blocks Fail',
 
-    getStudents = '[Authentication] Get Students',
-    getStudentsSuccess = '[Authentication] Get Students Success',
-    getStudentsFail = '[Authentication] Get Students Fail',
+    getStudents = '[Lobby] Get Students',
+    getStudentsSuccess = '[Lobby] Get Students Success',
+    getStudentsFail = '[Lobby] Get Students Fail',
+
+    generateSessionLink = '[Lobby] Generate Session Link',
+    generateSessionLinkSuccess = '[Lobby] Generate Session Link Success',
+    generateSessionLinkFail = '[Lobby] Generate Session Link Fail',
 }
 
 export const getCodeBlocks = createAction(LobbyActions.getCodeBlocks);
@@ -19,3 +23,7 @@ export const getCodeBlocksFail = createAction(LobbyActions.getCodeBlocks);
 export const getStudents = createAction(LobbyActions.getStudents);
 export const getStudentsSuccess = createAction(LobbyActions.getStudentsSuccess, props<{ payload: {students: User[]}}>());
 export const getStudentsFail = createAction(LobbyActions.getStudentsFail);
+
+export const generateSessionLink = createAction(LobbyActions.generateSessionLink, props<{ payload: {codeBlockId: number, studentId: number}}>());
+export const generateSessionLinkSuccess = createAction(LobbyActions.generateSessionLinkSuccess, props<{ payload: {link: string}}>());
+export const generateSessionLinkFail = createAction(LobbyActions.generateSessionLinkFail);

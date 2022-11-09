@@ -26,6 +26,7 @@
     "@ngrx/store": "^14.3.2",
     "@ngrx/store-devtools": "^14.3.2",
     "ngx-highlightjs": "^7.0.1",
+    "ngx-socket-io": "^4.3.1",
     "rxjs": "~7.5.0",
     "sweet-path": "^2.0.11",
     "tslib": "^2.3.0",

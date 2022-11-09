@@ -1,3 +1,4 @@
 <ng-container *ngIf="lobbyState$ | async as state">
-    <moveo-task-lobby [students]="state.students" [codeBlocks]="state.codeBlocks"></moveo-task-lobby>
+    <moveo-task-lobby [students]="state.students" [codeBlocks]="state.codeBlocks" [link]="state.link"
+        (onGenerateSessionLink)="generateSessionLink($event)"></moveo-task-lobby>
 </ng-container>

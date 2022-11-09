@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { getCodeBlocksEndpoint, getStudentsEndpoint } from 'src/app/endpoints/endpoints';
+import { generateSessionLinkEndpoint, getCodeBlocksEndpoint, getStudentsEndpoint } from 'src/app/endpoints/endpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,9 @@ export class LobbyService {
 
   getCodeBlocks() {
     return this.http.get(getCodeBlocksEndpoint.original);
+  }
+
+  generateSessionLink(codeBlockId: number, studentId: number) {
+    return this.http.post(generateSessionLinkEndpoint.original, {codeblock_id: codeBlockId, student_id: studentId});
   }
 }

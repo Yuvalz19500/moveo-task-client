@@ -1,31 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { debounceTime, fromEvent } from 'rxjs';
 
 @Component({
   selector: 'moveo-task-session',
   templateUrl: './session.component.html',
   styleUrls: ['./session.component.scss']
 })
-export class SessionComponent implements OnInit {
+export class SessionComponent implements AfterViewInit {
 
-  code = `// program to find the factors of an integer
+  @ViewChild('codeEditor') codeEditor: ElementRef | undefined;
 
-  // take input
-  const num = prompt('Enter a positive number: ');
-  
-  console.log('The factors of is:');
-  
-  // looping through 1 to num
-  for(let i = 1; i <= num; i++) {
-  
-      // check if number is a factor
-      if(num % i == 0) {
-          console.log(i);
-      }
-  }`
+  @Input() isStudent = false;
+  @Input() code: string | null = null;
+
+  @Output() codeChange = new EventEmitter<string>();
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
+    fromEvent(this.codeEditor?.nativeElement, 'input').pipe(
+      debounceTime(500)
+    ).subscribe((data) => {
+      this.onCodeChange(data);
+    })
+  }
+
+  onCodeChange(event: any) {
+    this.codeChange.emit(event.target.innerText)
   }
 
 }

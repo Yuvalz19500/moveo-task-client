@@ -1,3 +1,4 @@
 <div class="page-wrapper">
-    <pre><div class="code-editor" contenteditable="true" [highlight]="code" [lineNumbers]="true"></div></pre>
+    <pre
+        class="preformat-wrapper"><code #codeEditor class="code-editor" [contentEditable]="isStudent ? 'true' : 'false'" [highlight]="code"></code></pre>
 </div>

@@ -1,6 +1,6 @@
 <div class="page-wrapper">
     <form class="login-form-wrapper" [formGroup]="loginForm" (ngSubmit)="onLoginAttempt()">
-        <div class="login-logo">Moveo Task</div>
+        <div class="login-logo">Moveo Task - {{studentLogin === true ? 'Student Login' : 'Mentor Login'}}</div>
         <mat-form-field appearance="fill">
             <mat-label>Username</mat-label>
             <input matInput formControlName="username">
@@ -8,9 +8,9 @@
         </mat-form-field>
         <mat-form-field appearance="fill">
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password">
+            <input type="password" matInput formControlName="password">
             <mat-error>Password field must not be empty</mat-error>
         </mat-form-field>
-        <button mat-raised-button class="login-button" type="submit">Login</button>
+        <button mat-raised-button class="login-button" type="submit" color="primary">Login</button>
     </form>
 </div>

@@ -1,7 +1,13 @@
 <div class="page-wrapper">
     <div class="page-header">Choose code block</div>
-    <div class="code-blocks-list">
-        <moveo-task-lobby-code-block-item *ngFor="let codeBlock of codeBlocks" [title]="codeBlock.title"
-            [code]="codeBlock.code" (pickedCodeBlock)="onPickedCodeBlock()"></moveo-task-lobby-code-block-item>
+    <div class="main-content-list">
+        <div class="code-blocks-list">
+            <moveo-task-lobby-code-block-item *ngFor="let codeBlock of codeBlocks" [title]="codeBlock.title"
+                [code]="codeBlock.code" (pickedCodeBlock)="onPickedCodeBlock(codeBlock.id)">
+            </moveo-task-lobby-code-block-item>
+        </div>
+        <div class="generated-link-wrapper" *ngIf="link">
+            Generated Link: {{ link }}
+        </div>
     </div>
 </div>
