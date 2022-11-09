@@ -1,5 +1,6 @@
 import { Component, HostListener, OnDestroy } from '@angular/core';
 import { AuthService } from './authentication/services/auth.service';
+import { SessionService } from './session/services/session.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,10 @@ import { AuthService } from './authentication/services/auth.service';
 })
 export class AppComponent {
 
-  constructor(private authService: AuthService) {}
+  constructor(private sessionService: SessionService) {}
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeunloadHandler(event: any): void {
+    this.sessionService.closeSocket();
+  }
 }

@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
 import { LobbyCodeBlock } from "src/app/interfaces/lobby";
 import { User } from "src/app/interfaces/user";
-import { getCodeSuccess } from "./session.actions";
+import { codeChange, getCodeSuccess } from "./session.actions";
 
 export const sessionFeatureKey = 'session';
 
@@ -16,4 +16,5 @@ export const initialState: State = {
 export const sessionReducer = createReducer(
     initialState,
     on(getCodeSuccess, (state, { payload }) => ({...state, code: payload.code})),
+    on(codeChange, (state, { payload }) => ({...state, code: payload.code})),
 )

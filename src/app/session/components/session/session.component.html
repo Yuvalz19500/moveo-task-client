@@ -1,4 +1,6 @@
 <div class="page-wrapper">
     <pre
-        class="preformat-wrapper"><code #codeEditor class="code-editor" [contentEditable]="isStudent ? 'true' : 'false'" [highlight]="code"></code></pre>
+        class="preformat-wrapper"><div #codeEditor class="code-editor" [contentEditable]="isStudent ? 'true' : 'false'" [highlight]="code" (keydown.Tab)="onTabPressedInEditor($event)"></div></pre>
 </div>
+
+<!-- <code #codeEditor class="code-editor" [contentEditable]="isStudent ? 'true' : 'false'" [highlight]="code" (keydown.Tab)="onTabPressedInEditor($event)"></code> -->

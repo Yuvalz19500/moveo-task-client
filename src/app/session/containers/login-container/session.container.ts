@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/authentication/services/auth.service';
 import { UserType } from 'src/app/interfaces/user';
 import { SessionService } from '../../services/session.service';
 import { selectSessionState } from '../../store';
-import { getCode } from '../../store/session.actions';
+import { codeChange, getCode } from '../../store/session.actions';
 
 @Component({
   selector: 'moveo-task-login-container',
   templateUrl: './session.container.html',
 })
-export class SessionContainerComponent implements OnInit {
+export class SessionContainerComponent implements OnInit, OnDestroy {
 
   isStudent = false;
   codeBlockId: number | null = null;
   uuid: string | null = null;
+  codeChangeSubscription: Subscription | null = null;
 
   sessionState$ = this.store.pipe(select(selectSessionState));
 
@@ -32,11 +34,24 @@ export class SessionContainerComponent implements OnInit {
 
     if(this.uuid) {
       this.sessionService.connectToSocket(this.uuid);
+
+      if(!this.isStudent) {
+        this.codeChangeSubscription = this.sessionService.onReceiveCodeChange$.subscribe((code: string) => {
+          this.store.dispatch(codeChange({payload: {code}}));
+        });
+      } 
     }
   }
 
+  ngOnDestroy(): void {
+    this.sessionService.closeSocket();
+
+    this.codeChangeSubscription?.unsubscribe();
+    this.codeChangeSubscription = null;
+  }
+
   onCodeChange(code: string) {
-    
+    this.sessionService.sendCodeChange(code);
   }
 
 }
