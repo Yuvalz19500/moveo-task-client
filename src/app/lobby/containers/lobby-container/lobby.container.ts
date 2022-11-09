@@ -19,7 +19,6 @@ export class LobbyContainerComponent implements OnInit {
   }
 
   generateSessionLink(data: {studentId: number, codeBlockId: number}) {
-    console.log('yuval debug-', data);
     this.store.dispatch(generateSessionLink({payload: {codeBlockId: data.codeBlockId, studentId: data.studentId}}));
   }
 

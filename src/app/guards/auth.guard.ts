@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      console.log('Yuval debug - ', route.queryParams);
       if(!this.authService.authenticated) {
         this.router.navigate(['/mentor-login']);
         return false;
