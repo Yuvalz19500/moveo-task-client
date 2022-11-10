@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:github-pages": "ng build --configuration production --base-href=https://yuvalz19500.github.io/moveo-task-client/"
+    "build:github-pages": "ng build --configuration production --base-href=http://yuval-zarfati.website/"
   },
   "private": true,
   "dependencies": {
