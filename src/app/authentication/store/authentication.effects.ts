@@ -49,4 +49,13 @@ export class AuthenticationEffects {
             })
         )
     }, {dispatch: false});
+
+    loginFail$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(loginFail),
+            tap(() => {
+                this.snackBar.open('Login Failed!', undefined, {duration: 3000});
+            })
+        )
+    }, {dispatch: false})
 }

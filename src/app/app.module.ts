@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: `http://${environment.apiUrl}`, options: { autoConnect: false } };
+const config: SocketIoConfig = { url: `http://18.192.182.136:3000`, options: { autoConnect: false } };
 
 const modules = [
   BrowserModule,

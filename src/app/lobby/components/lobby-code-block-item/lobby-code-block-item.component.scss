@@ -1,10 +1,21 @@
 .code-block-card {
     width: 400px;
+    height: 400px;
+
+    & mat-card-header {
+        height: 32px;
+    }
+
+    & mat-card-content {
+        height: 300px;
 
     & .pre-format-wrapper {
+        height: 300px;
 
         & .code-wrapper {
+            height: 300px;
         }
+    }
     }
 
     & mat-card-actions {
